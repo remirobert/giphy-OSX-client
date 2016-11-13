@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ImageCollectionItem" customModule="ImageViewer" customModuleProvider="target">
+            <connections>
+                <outlet property="imageViewPreview" destination="ANB-vm-fmr" id="k8S-LE-4cQ"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ANB-vm-fmr">
+                    <rect key="frame" x="-3" y="-3" width="371" height="278"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="lIO-x8-KXp"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ANB-vm-fmr" secondAttribute="bottom" id="EVd-RF-dkM"/>
+                <constraint firstItem="ANB-vm-fmr" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Mkq-Vf-qNC"/>
+                <constraint firstAttribute="trailing" secondItem="ANB-vm-fmr" secondAttribute="trailing" id="dBV-qC-zUf"/>
+                <constraint firstItem="ANB-vm-fmr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="hYV-of-Vnh"/>
+            </constraints>
+            <point key="canvasLocation" x="46.5" y="26"/>
+        </customView>
+        <customObject id="cBm-yY-gEd" customClass="ImageCollectionItem" customModule="ImageViewer" customModuleProvider="target"/>
+    </objects>
+</document>
