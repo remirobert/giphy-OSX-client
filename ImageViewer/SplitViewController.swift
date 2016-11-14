@@ -33,7 +33,6 @@ class SplitViewController: NSSplitViewController {
 extension SplitViewController: GifControllerDelegate {
     func didUpdateGifs() {
         self.listController?.configure()
-        GifController.sharedInstance.currentSelected = 0
     }
     
     func didUpdateSearch(search: String?) {        

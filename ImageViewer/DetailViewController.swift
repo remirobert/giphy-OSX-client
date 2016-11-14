@@ -38,14 +38,12 @@ class DetailViewController: NSViewController {
         guard let imageUrl = selectedFile?.url else {
             return
         }
-        print("✅ init task for url : \(imageUrl)")
+        
         self.currentImageUrl = imageUrl
         self.currentTask = ImagesController.shredInstance.get(url: imageUrl) { [weak self] image, url in
             if url != self?.currentImageUrl ?? "" {
                 return
             }
-            
-            print("👀 get image for url : \(url)")
             self?.image = image
             DispatchQueue.main.async {
                 self?.buttonSave.isHidden = false

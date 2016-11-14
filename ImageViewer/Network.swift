@@ -19,7 +19,7 @@ class Network {
         self.session = URLSession.shared
     }
     
-    func send(url: URL, completion: @escaping ([Gif]?) -> ()) {
+    func send(url: URL, completion: @escaping ([Gif]?) -> ()) -> URLSessionDataTask {
         let task = self.session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error {
                 print("error : \(error.localizedDescription)")
@@ -40,5 +40,6 @@ class Network {
             completion(Gif.instanceGifs(json: gifs))
         }
         task.resume()
+        return task
     }
 }

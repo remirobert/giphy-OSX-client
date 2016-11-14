@@ -24,6 +24,7 @@ protocol GifControllerDelegate: class {
 class GifController {
     static let sharedInstance = GifController()
     fileprivate let network = Network()
+    fileprivate var currentTask: URLSessionDataTask?
     weak var delegate: GifControllerDelegate?
     var gifs = [Gif]()
     
@@ -42,11 +43,15 @@ class GifController {
 
 extension GifController {
     private func performRequest(url: URL) {
-        self.network.send(url: url) { gifs in
+        if let task = self.currentTask {
+            task.cancel()
+        }
+        self.currentTask = self.network.send(url: url) { gifs in
             guard let gifs = gifs else { return }
             self.gifs = gifs
             DispatchQueue.main.async {
                 self.delegate?.didUpdateGifs()
+                GifController.sharedInstance.currentSelected = 0
             }
         }
     }

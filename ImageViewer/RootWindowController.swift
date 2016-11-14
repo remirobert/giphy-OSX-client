@@ -44,8 +44,8 @@ class RootWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        self.segmentSizeMode.selectedSegment = 2
-        
+        self.segmentSizeMode.selectedSegment = 0
+    
         guard let window = self.window else {return}
         window.backgroundColor = NSColor.darkGray
         window.minSize = NSSize(width: 750, height: 500)
