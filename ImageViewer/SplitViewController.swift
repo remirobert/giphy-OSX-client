@@ -10,8 +10,8 @@ import Cocoa
 
 class SplitViewController: NSSplitViewController {
 
-    var listController: CollectionViewController?
-    var detailController: DetailController?
+    fileprivate var listController: CollectionViewController?
+    fileprivate var detailController: DetailViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +20,10 @@ class SplitViewController: NSSplitViewController {
         
         self.listController = self.splitViewItems.first?.viewController as? CollectionViewController
         self.listController?.delegate = self
-        self.detailController = self.splitViewItems.last?.viewController as? DetailController
+        self.detailController = self.splitViewItems.last?.viewController as? DetailViewController
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.NSSplitViewDidResizeSubviews, object: nil, queue: nil) { _ in
             guard let collectionController = self.splitViewItems.first?.viewController as? CollectionViewController else { return }
-            print("split view resized : \(collectionController.view.frame.size.width)")
             collectionController.didResize()
         }
         GifController.sharedInstance.fetchTrending()

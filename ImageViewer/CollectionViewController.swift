@@ -53,6 +53,7 @@ class CollectionViewController: NSViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.isSelectable = true
+        self.collectionView.allowsMultipleSelection = false
         self.collectionView.reloadData()
     }
 }

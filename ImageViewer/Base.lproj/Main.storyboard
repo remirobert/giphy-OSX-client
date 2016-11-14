@@ -739,9 +739,9 @@
                                 <toolbarItem implicitItemIdentifier="84DE3DA1-4E45-4290-9ACD-B4E07AEF2EB7" label="" paletteLabel="" id="F6w-cp-7vW">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="96" height="22"/>
-                                    <size key="maxSize" width="147" height="22"/>
+                                    <size key="maxSize" width="168" height="22"/>
                                     <textField key="view" verticalHuggingPriority="750" id="Toe-Nf-xfE">
-                                        <rect key="frame" x="0.0" y="14" width="111" height="22"/>
+                                        <rect key="frame" x="0.0" y="14" width="168" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Search anything" bezelStyle="round" id="zUH-3j-9FA">
                                             <font key="font" metaFont="system"/>
@@ -753,10 +753,26 @@
                                         </connections>
                                     </textField>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="9192A0E5-35DB-4AD4-82D4-EFDB7501DAD9" label="Trending" paletteLabel="Trending" image="NSHomeTemplate" id="tby-Rm-Cj8">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="21" height="21"/>
+                                    <size key="maxSize" width="21" height="21"/>
+                                    <button key="view" verticalHuggingPriority="750" id="RyN-bJ-gT8">
+                                        <rect key="frame" x="17" y="14" width="21" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSHomeTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nm5-ZS-d5u">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="searchTrendingContent:" target="B8D-0N-5wS" id="ogw-zc-lhe"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
+                                <toolbarItem reference="tby-Rm-Cj8"/>
                                 <toolbarItem reference="F6w-cp-7vW"/>
-                                <toolbarItem reference="qyM-hC-OKC"/>
                                 <toolbarItem reference="Gu5-nh-g6i"/>
                                 <toolbarItem reference="hCg-Eg-Mvf"/>
                             </defaultToolbarItems>
@@ -855,10 +871,10 @@
             </objects>
             <point key="canvasLocation" x="655" y="520"/>
         </scene>
-        <!--Detail Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="1Ch-tL-ADc">
             <objects>
-                <viewController id="kTv-EM-8CZ" customClass="DetailController" customModule="ImageViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kTv-EM-8CZ" customClass="DetailViewController" customModule="ImageViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="i7a-Uh-vzq">
                         <rect key="frame" x="0.0" y="0.0" width="1442" height="720"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -979,6 +995,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSShareTemplate" width="11" height="16"/>
         <image name="NSUserGroup" width="32" height="32"/>
         <image name="parseServerIllustration (1)" width="1442" height="720"/>

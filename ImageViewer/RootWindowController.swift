@@ -28,34 +28,16 @@ class RootWindowController: NSWindowController {
         }
     }
     
-    override func keyDown(with event: NSEvent) {
-        return
-        switch event.keyCode {
-        case 36:
-            if self.searchField.stringValue.characters.count == 0 {
-                return
-            }
-            GifController.sharedInstance.search = self.searchField.stringValue
-            GifController.sharedInstance.fetch()
-        case 124:
-            if GifController.sharedInstance.currentSelected + 1 >= GifController.sharedInstance.gifs.count {
-                GifController.sharedInstance.currentSelected = GifController.sharedInstance.gifs.count - 1
-            }
-            else {
-                GifController.sharedInstance.currentSelected += 1
-            }
-        case 123:
-            if GifController.sharedInstance.currentSelected - 1 < 0 {
-                return
-            }
-            GifController.sharedInstance.currentSelected -= 1
-        default: break
-        }
+    @IBAction func searchTrendingContent(_ sender: AnyObject) {
+        self.searchTextField.stringValue = ""
+        ImagesController.shredInstance.clearTasks()
+        GifController.sharedInstance.fetchTrending()
     }
 
     @IBAction func searchTextChanged(_ sender: AnyObject) {
         self.searchTextField.resignFirstResponder()
         GifController.sharedInstance.search = (sender as! NSTextField).stringValue
+        ImagesController.shredInstance.clearTasks()
         GifController.sharedInstance.fetch()
     }
     

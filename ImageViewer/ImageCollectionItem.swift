@@ -21,8 +21,9 @@ class ImageCollectionItem: NSCollectionViewItem {
     
     func configure(gif: Gif, index: Int) {
         guard let preview = gif.imagePreview else { return }
-        ImagesController.shredInstance.get(url: preview.url) { [weak self] image, url in
+        let _ = ImagesController.shredInstance.get(url: preview.url) { [weak self] image, url in
             if preview.url != url {
+                self?.imageViewPreview.image = nil
                 return
             }
             DispatchQueue.main.async {
@@ -40,6 +41,7 @@ class ImageCollectionItem: NSCollectionViewItem {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imageViewPreview.imageScaling = .scaleAxesIndependently
+        self.imageViewPreview.imageAlignment = .alignCenter
         self.imageViewPreview.animates = true
         self.imageViewPreview.layer?.backgroundColor = NSColor.black.cgColor
         self.view.layer?.backgroundColor = NSColor.black.cgColor

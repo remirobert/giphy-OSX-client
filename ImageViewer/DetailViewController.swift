@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DetailController: NSViewController {
+class DetailViewController: NSViewController {
 
     @IBOutlet weak var buttonSave: NSButton!
     @IBOutlet weak var labelDimension: NSTextField!
@@ -20,6 +20,7 @@ class DetailController: NSViewController {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
 
     private var currentImageUrl: String?
+    private var currentTask: NetworkTask?
     private var image: NSImage?
     
     private func displayDetailPreview(gif: Gif) {
@@ -37,11 +38,14 @@ class DetailController: NSViewController {
         guard let imageUrl = selectedFile?.url else {
             return
         }
+        print("✅ init task for url : \(imageUrl)")
         self.currentImageUrl = imageUrl
-        ImagesController.shredInstance.get(url: imageUrl) { [weak self] image, url in
+        self.currentTask = ImagesController.shredInstance.get(url: imageUrl) { [weak self] image, url in
             if url != self?.currentImageUrl ?? "" {
                 return
             }
+            
+            print("👀 get image for url : \(url)")
             self?.image = image
             DispatchQueue.main.async {
                 self?.buttonSave.isHidden = false
@@ -52,6 +56,9 @@ class DetailController: NSViewController {
     }
 
     func configure(gif: Gif) {
+        if let task = self.currentTask {
+            task.task.cancel()
+        }
         self.buttonSave.isHidden = true
         self.labelLink.stringValue = gif.source ?? ""
         self.labelSourceName.stringValue = gif.sourceTld ?? ""
